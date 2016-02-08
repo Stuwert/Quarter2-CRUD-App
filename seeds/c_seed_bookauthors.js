@@ -1,3 +1,4 @@
+var db = require('../db/knex')
 
 exports.seed = function(knex, Promise) {
   return db('authors').select().then(function(authors){
