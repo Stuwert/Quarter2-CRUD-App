@@ -1,0 +1,65 @@
+html, body{
+  margin: 0;
+  padding: 0;
+}
+*{
+  box-sizing: border-box;
+  font-family: 'Quicksand';
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+a:hover{
+  text-decoration: underline;
+  color: blue;
+}
+
+header{
+  height: 8vw;
+  padding: 2vw;
+  width: 100%;
+}
+
+header img{
+  margin: 0;
+  display: inline-block;
+  vertical-align: middle;
+  width: 6vw;
+  height: 6vw;
+}
+
+header h1{
+  margin: 0;
+  font-size: 4vw;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 2vw;
+  position: relative;
+  top: -.5vw;
+}
+
+.splash div {
+  width: 50%;
+  height: 40vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  float: left;
+  border: 1px solid black;
+}
+
+.splash div img{
+  width: 42vw;
+  height: 25vw;
+}
+
+main.splash{
+  width: 96vw;
+  height: auto;
+  margin-left: 2vw;
+  margin-top: 2vw;
+}
