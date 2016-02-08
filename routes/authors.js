@@ -6,7 +6,7 @@ var db = require('../lib/authors')
 /* GET authors listing. */
 router.get('/', function(req, res, next) {
   db.returnAllAuthorsWithBooks(function(authors){
-    res.render('authors/all', {authors: authors})
+    res.render('authors/all', {authors: authors, length: Object.keys(authors).length})
   })
 });
 

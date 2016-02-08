@@ -3,6 +3,7 @@ extends ../layout
 block content
   +booksauthorsnav('authors')
   main.allbooks
+    h2 Authors (#{length})
     each author, id in authors 
       div.book
         img.portrait(src=author.portrait)
