@@ -85,12 +85,16 @@ main {
   margin: 10px 0;
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .allbooks .book img{
   height: 20vw;
   width: 22%;
+}
+
+.allbooks .book .portrait{
+  width: 26%;
 }
 
 .allbooks .book .details{
@@ -99,8 +103,20 @@ main {
   margin: 0;
 }
 
+.allbooks .authordetails.details{
+  width: 71%;
+}
+
 .allbooks .details h3{
   margin: 0;
+}
+
+.authorbooks{
+  font-size: 1.75vw;
+}
+
+p em{
+  font-weight: bold;
 }
 
 ul.authors{

@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  +booksauthorsnav('authors')
+  main.allbooks
+    each author, id in authors 
+      div.book
+        img.portrait(src=author.portrait)
+        div.details.authordetails 
+          h3
+            a(href='/authors/' + id)= author.first_name + " " + author.last_name 
+          p= author.bio 
+          p 
+            em Books
+          ul.authorbooks
+            each item, i in author.books 
+              li
+                a(href='/books/' + item[1])= item[0]
+        

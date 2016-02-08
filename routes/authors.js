@@ -1,9 +1,13 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
+var db = require('../lib/authors')
+
+/* GET authors listing. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  db.returnAllAuthorsWithBooks(function(authors){
+    res.render('authors/all', {authors: authors})
+  })
 });
 
 module.exports = router;
