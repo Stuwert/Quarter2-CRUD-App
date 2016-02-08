@@ -3,11 +3,12 @@ extends ../layout
 block content
   +booksauthorsnav('books')
   main.allbooks
-    each book in books 
+    each book, id in books 
       div.book
         img(src=book.book_image)
         div.details 
-          h3= book.title 
+          h3
+            a(href='/books/' + id)= book.title 
           ul.authors 
             each item, i in book.authors 
               li= item 

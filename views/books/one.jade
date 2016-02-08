@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+  +booksauthorsnav('books')
+  main.allbooks
+    div.book
+      img(src=book.image_url)
+      div.details 
+        h3= book.title 
+        ul.authors 
+          each author, i in authors 
+            li
+              a(href='/authors/' + author.id)= author.first_name + " " + author.last_name 
+            if i !== authors.length - 1 
+              li &
+        p= book.description 

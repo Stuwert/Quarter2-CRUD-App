@@ -11,5 +11,12 @@ router.get('/', function(req, res, next) {
   })
 });
 
+router.get('/:id', function(req, res, next){
+  books.returnOneBook(req.params.id, function(book, authors){
+    console.log('book is ', book);
+    res.render('books/one', {book: book, authors: authors})
+  })
+})
+
 
 module.exports = router;
