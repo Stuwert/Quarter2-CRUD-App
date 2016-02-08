@@ -10,4 +10,10 @@ router.get('/', function(req, res, next) {
   })
 });
 
+router.get('/:id', function(req, res, next){
+  db.returnOneAuthorWithBooks(req.params.id, function(author, books){
+    res.render('authors/one', {author: author, books: books})
+  })
+})
+
 module.exports = router;
