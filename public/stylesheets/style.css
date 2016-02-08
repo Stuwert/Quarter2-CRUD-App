@@ -1,6 +1,7 @@
 html, body{
   margin: 0;
   padding: 0;
+  width: auto;
 }
 *{
   box-sizing: border-box;
@@ -62,4 +63,88 @@ main.splash{
   height: auto;
   margin-left: 2vw;
   margin-top: 2vw;
+}
+
+.highlighted{
+  background-color: grey;
+}
+
+main {
+  margin-top: 2vw;
+  margin-left: 10vw;
+  width: 65vw;
+  float: left;
+  height: auto;
+}
+
+.book{
+  margin: 10px 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.book img{
+  height: 20vw;
+  width: 22%;
+}
+
+.book .details{
+  height: 100%;
+  width: 75%;
+  margin: 0;
+}
+
+.details h3{
+  margin: 0;
+}
+
+ul.authors{
+  list-style: none;
+  font-size: 1.75vw;
+  margin: 0;
+  overflow: auto;
+  padding: 0;
+}
+
+ul.authors li{
+  float: left;
+  margin: .25vw;
+}
+
+p{
+  font-size: 1.75vw;
+}
+
+nav{
+  height: 70vw;
+  margin-top: 2vw;
+  width: 15vw;
+  margin-left: 2vw;
+  margin-right: 0;
+  float: left;
+  max-height: 80vh;
+  max-width: 115px;
+}
+
+nav div{
+  margin: 0;
+  height: 50%;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: space-around;
+}
+
+nav img{
+  width: 75%;
+}
+
+nav h2{
+  transform: rotate(-90deg);
+  margin: 0;
+  position: relative;
+  top: -2vw;
+  left: -1vw;
 }

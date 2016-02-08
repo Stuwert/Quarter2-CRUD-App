@@ -1,5 +1,23 @@
 extends ../layout
 
 block content
+  +booksauthorsnav('books')
   main.allbooks
-      
+    each book in books 
+      div.book
+        img(src=book.book_image)
+        div.details 
+          h3= book.title 
+          ul.authors 
+            each item, i in book.authors 
+              li= item 
+              if i !== book.authors.length - 1 
+                li &
+          p= book.description 
+        
+        
+        
+        
+        
+        
+        
