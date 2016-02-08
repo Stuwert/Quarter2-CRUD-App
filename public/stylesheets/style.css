@@ -18,6 +18,10 @@ a:hover{
   color: blue;
 }
 
+h2{
+  margin: 0;
+}
+
 header{
   height: 8vw;
   padding: 2vw;
@@ -77,25 +81,25 @@ main {
   height: auto;
 }
 
-.book{
+.allbooks .book{
   margin: 10px 0;
   width: 100%;
   display: flex;
   justify-content: space-around;
 }
 
-.book img{
+.allbooks .book img{
   height: 20vw;
   width: 22%;
 }
 
-.book .details{
+.allbooks .book .details{
   height: 100%;
   width: 75%;
   margin: 0;
 }
 
-.details h3{
+.allbooks .details h3{
   margin: 0;
 }
 
