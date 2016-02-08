@@ -6,11 +6,10 @@ var books = require('../lib/books')
 
 /* GET all books. */
 router.get('/', function(req, res, next) {
-  books.returnAllBooks(function(books){
+  books.returnAllBooksWithAuthors(function(books){
     res.send(books);
   })
 });
-
 
 
 module.exports = router;
