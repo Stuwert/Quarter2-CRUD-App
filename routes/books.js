@@ -1,9 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
+var books = require('../lib/books')
+
+
+/* GET all books. */
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  books.returnAllBooks(function(books){
+    res.send(books);
+  })
 });
 
 module.exports = router;
