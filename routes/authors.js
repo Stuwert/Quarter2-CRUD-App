@@ -9,10 +9,18 @@ var validator = require('../lib/validations')
 
 /* GET authors listing. */
 router.get('/', function(req, res, next) {
-  db.returnAllAuthorsWithBooks(function(authors){
-    console.log(authors);
-    res.render('authors/all', {authors: authors, length: authors.length})
-  })
+  if (req.query.name){
+    var queryArray = req.query.name.split(" ");
+    db.someAuthors(queryArray, function(authors){
+      console.log(authors);
+      res.render('authors/all', {authors: authors, length: authors.length})
+    })
+  }else{
+    db.returnAllAuthorsWithBooks(function(authors){
+      console.log(authors);
+      res.render('authors/all', {authors: authors, length: authors.length})
+    })
+  }
 });
 
 router.post('/', function(req, res, next){
