@@ -15,3 +15,8 @@ block content
           each item, i in books 
             li
               a(href='/books/' + item.book_id)= item.title 
+      div.editdelete
+        a(href='/authors/' + author.id + '/edit')
+          button Edit 
+        a(href='/authors/' + author.id + '/delete')
+          button Delete
