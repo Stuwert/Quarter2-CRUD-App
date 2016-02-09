@@ -10,6 +10,7 @@ var validator = require('../lib/validations')
 /* GET authors listing. */
 router.get('/', function(req, res, next) {
   db.returnAllAuthorsWithBooks(function(authors){
+    console.log(authors);
     res.render('authors/all', {authors: authors, length: authors.length})
   })
 });

@@ -9,13 +9,13 @@ block content
           li=item
     form#form(method='POST' action= action)
       label First Name 
-      input(type='text' name='first_name' placeholder="What's your favorite author?" required value= author ? author.first_name : "")
+      input(type='text' name='first_name' placeholder="Pseudonyms also acceptable" required value= author ? author.first_name : "")
       label Last Name 
-      input(type='text' name='last_name' placeholder="Where in the library would you find this?" required value= author ? author.last_name : "")
+      input(type='text' name='last_name' placeholder="If none, use a ." required value= author ? author.last_name : "")
       label Portait URL 
       input(type='url' name='portrait_url' value= author ? author.portrait_url : "")
       label Biography 
-      textarea(name="bio" placeholder="Put in your author description" required)= value= author ? author.description : ""
+      textarea(name="bio" placeholder="Put in your author bio" required)= value= author ? author.description : ""
       if books 
         label Books 
         div.authorselect
