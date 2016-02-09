@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/new', function(req, res, next){
   books.returnAuthors(function(authors){
-    res.render('forms/book', {authors: authors})
+    res.render('forms/book', {authors: authors, action:'/books'})
   })
 })
 
@@ -26,7 +26,7 @@ router.post('/', function(req, res, next){
   var validated = validator.validateBook(req.body);
   if(validated.length > 0){
     books.returnAuthors(function(authors){
-      res.render('forms/book', {book: req.body, validation: validated, authors : authors })
+      res.render('forms/book', {book: req.body, validation: validated, authors : authors, action:'/books' })
     })
   }
   books.createNewBook(req.body, function(bookid){
@@ -54,10 +54,32 @@ router.get('/filter', function(req, res, next){
 
 router.get('/:id', function(req, res, next){
   books.returnOneBook(req.params.id, function(book, authors){
-    console.log('book is ', book);
     res.render('books/one', {book: book, authors: authors})
   })
 })
+
+router.get('/:id/edit', function(req, res, next){
+  books.returnOneBook(req.params.id, function(book, authors){
+    books.returnAuthors(function(authorz){
+      res.render('forms/book', {book: book, action: '/books/' + req.params.id, authors: authorz})
+    })
+  })
+})
+
+router.post('/:id/', function(req, res, next){
+  var validated = validator.validateBook(req.body);
+  if(validated.length > 0){
+    books.returnOneBook(req.params.id, function(book, authors){
+      books.returnAuthors(function(authorz){
+        res.render('forms/book', {book: req.body, validation: validated, authors: authorz , action:'/books' })
+      })
+    })
+  }else{
+    books.updateBook(req.params.id, req.body, function(){
+      res.redirect('/books/' + req.params.id)
+    })
+  }
+} )
 
 
 module.exports = router;
