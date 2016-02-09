@@ -5,7 +5,7 @@ block content
   main.allbooks
     h2 Books (#{length})
     div.options
-      form(method='GET' action='/books')
+      form.search(method='GET' action='/books')
         input(type='text' name='title')
         button Search
       ul.filter

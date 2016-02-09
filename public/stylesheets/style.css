@@ -289,3 +289,14 @@ form > input, textarea{
   top: 0;
   right: 0;
 }
+
+.search{
+  height: 12vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search button, .search input{
+  font-size: 2vw;
+}
