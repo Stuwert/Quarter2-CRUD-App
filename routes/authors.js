@@ -5,8 +5,12 @@ var db = require('../lib/authors')
 
 /* GET authors listing. */
 router.get('/', function(req, res, next) {
-  db.returnAllAuthorsWithBooks(function(authors){
-    res.render('authors/all', {authors: authors, length: Object.keys(authors).length})
+  var pagenum = req.query.page > 1 ? req.query.page : 1;
+  db.returnAllAuthors(function(authorslength){
+    db.returnAllAuthorsWithBooks(pagenum, function(authors){
+      var pages = Math.round(authorslength.length / 5 + 0.5)
+      res.render('authors/all', {authors: authors, length: authorslength.length, pages: pages})
+    })
   })
 });
 

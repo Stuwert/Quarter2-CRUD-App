@@ -3,18 +3,24 @@ extends ../layout
 block content
   +booksauthorsnav('authors')
   main.allbooks
-    h2 Authors (#{length})
-    each author, id in authors 
+    h2 Total Authors (#{length})
+    h5 Displaying 5 Authors
+    - var i = 1
+    ul.view
+      while i <= pages 
+        li
+          a(href='/authors?page=' + i)= i++
+    each author in authors 
       div.book
-        img.portrait(src=author.portrait)
+        img.portrait(src=author.image)
         div.details.authordetails 
           h3
-            a(href='/authors/' + id)= author.first_name + " " + author.last_name 
+            a(href='/authors/' + author.id)= author.name 
           p= author.bio 
           p 
             em Books
           ul.authorbooks
-            each item, i in author.books 
+            each book in author.books 
               li
-                a(href='/books/' + item[1])= item[0]
+                a(href='/books/' + book.id)= book.title
         
