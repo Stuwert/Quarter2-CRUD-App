@@ -5,11 +5,6 @@ block content
   main.allbooks
     h2 Authors (#{length})
     h5= authors.length > 1 ? "Displaying " + authors.length + " Authors" : "Displaying " + authors.length + " Author"
-    - var i = 1
-    ul.view
-      while i <= pages 
-        li
-          a(href='/authors?page=' + i)= i++
     each author in authors 
       div.book
         img.portrait(src=author.image)
@@ -23,5 +18,9 @@ block content
             each book in author.books 
               li
                 a(href='/books/' + book.id)= book.title
-          
+        div.editdelete
+          a(href='/authors/' + author.id + '/edit')
+            button Edit 
+          a(href='/authors/' + author.id + '/delete')
+            button Delete
         

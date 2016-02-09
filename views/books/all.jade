@@ -6,17 +6,12 @@ block content
     h2 Books (#{length})
     h5= books.length > 1 ? "Displaying " + books.length + " Books" : "Displaying " + books.length + " Book"
     div.options
-      - var i = 1
-      ul.view
-        while i <= pages 
-          li
-            a(href='/books?page=' + i)= i++
       ul.filter
         li Filter
         li 
-          a(href='/books/filter?genre=Javascript') Javascript 
+          a(href='/books?genre=Javascript') Javascript 
         li 
-          a(href='/books/filter?genre=Python') Python
+          a(href='/books?genre=Python') Python
     
     each book in books 
       div.book
@@ -25,7 +20,7 @@ block content
           h3
             a(href='/books/' + book.id)= book.title 
           p
-            a(href='/books/filter?genre=' + book.genre)= book.genre
+            a(href='/books?genre=' + book.genre)= book.genre
           ul.authors 
             each item, i in book.authors 
               li
