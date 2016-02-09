@@ -24,6 +24,18 @@ router.get('/new', function(req, res, next){
   })
 })
 
+router.post('/:id/delete', function(req, res, next){
+  books.deleteBook(req.params.id, function(){
+    res.redirect('/books')
+  })
+})
+
+router.get('/:id/delete', function(req, res, next){
+  books.returnOneBook(req.params.id, function(book, authors){
+    res.render('books/one', {book: book, authors: authors, del: true})
+  })
+})
+
 router.post('/', function(req, res, next){
   var validated = validator.validateBook(req.body);
   if(validated.length > 0){

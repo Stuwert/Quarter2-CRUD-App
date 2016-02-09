@@ -15,3 +15,6 @@ block content
             if i !== authors.length - 1 
               li &
         p= book.description 
+    if del
+      form(method='post', action='/books/' + book.id + '/delete')
+        button Delete this Book?
