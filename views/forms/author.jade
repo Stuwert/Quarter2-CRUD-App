@@ -1,0 +1,31 @@
+extends ../layout
+
+block content
+  +booksauthorsnav('authors')
+  main
+    if validation
+      ul
+        each item in validation
+          li=item
+    form#form(method='POST' action= action)
+      label First Name 
+      input(type='text' name='first_name' placeholder="What's your favorite author?" required value= author ? author.first_name : "")
+      label Last Name 
+      input(type='text' name='last_name' placeholder="Where in the library would you find this?" required value= author ? author.last_name : "")
+      label Portait URL 
+      input(type='url' name='portrait_url' value= author ? author.portrait_url : "")
+      label Biography 
+      textarea(name="bio" placeholder="Put in your author description" required)= value= author ? author.description : ""
+      if books 
+        label Books 
+        div.authorselect
+          select.submitauthors(name='books' id='authors' multiple required)
+          div.deleteauthors
+        div.addauthors
+          select
+            each book in books
+              option(value= book.id)= book.title
+          button#addauthor(type='button') Add Book
+      button#submit Create author 
+
+  
