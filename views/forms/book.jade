@@ -19,12 +19,18 @@ block content
       label Authors 
       div.authorselect
         select.submitauthors(name='authors' id='authors' multiple required)
+          if booksauthors 
+            each author in booksauthors
+              option(selected value= author.author_id)= author.first_name + " " + author.last_name
         div.deleteauthors
+          if booksauthors 
+            each author in booksauthors 
+              div.delete(id= author.author_id) Remove 
       div.addauthors
         select
           each author in authors
             option(value= author.id)= author.first_name + " " + author.last_name 
         button#addauthor(type='button') Add Author
-      button#submit Create Book 
+      button#submit= book ? "Edit " + book.title : "Create Book"  
 
   

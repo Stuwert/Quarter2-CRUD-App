@@ -31,6 +31,26 @@ router.get('/new', function(req, res, next){
   res.render('forms/author', {action: '/authors'})
 })
 
+router.post('/:id', function(req, res, next){
+  var validated = validator.validateBook(req.body);
+  if(validated.length > 0){
+    res.render('forms/author', {action: '/authors/' + req.params.id, author: req.body})
+  }else{
+    db.updateAuthor(req.params.id, req.body, function(){
+      res.redirect('/authors/' + req.params.id)
+    })
+  }
+})
+
+router.get('/:id/edit', function(req, res, next){
+  db.returnOneAuthorWithBooks(req.params.id, function(author, books){
+    db.returnAllBooks(function(bookz){
+      console.log(books);
+      res.render('forms/author', {authorsbooks: books, author: author, books: bookz, action: '/authors/' + req.params.id })
+    })
+  })
+})
+
 router.get('/:id', function(req, res, next){
   db.returnOneAuthorWithBooks(req.params.id, function(author, books){
     res.render('authors/one', {author: author, books: books})

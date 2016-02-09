@@ -15,17 +15,22 @@ block content
       label Portait URL 
       input(type='url' name='portrait_url' value= author ? author.portrait_url : "")
       label Biography 
-      textarea(name="bio" placeholder="Put in your author bio" required)= value= author ? author.description : ""
+      textarea(name="bio" placeholder="Put in your author bio" required)= value= author ? author.bio : ""
       if books 
         label Books 
         div.authorselect
           select.submitauthors(name='books' id='authors' multiple required)
+            each book in authorsbooks
+              option(selected value= book.book_id)= book.title
           div.deleteauthors
+            each book in authorsbooks 
+              div.delete(id= book.book_id) Remove 
         div.addauthors
           select
             each book in books
               option(value= book.id)= book.title
           button#addauthor(type='button') Add Book
-      button#submit Create author 
+      button#submit= author ? "Edit " + author.first_name + " " + author.last_name : "Create Author"
+       
 
   

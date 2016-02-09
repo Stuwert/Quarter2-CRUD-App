@@ -73,7 +73,8 @@ router.get('/:id', function(req, res, next){
 router.get('/:id/edit', function(req, res, next){
   books.returnOneBook(req.params.id, function(book, authors){
     books.returnAuthors(function(authorz){
-      res.render('forms/book', {book: book, action: '/books/' + req.params.id, authors: authorz})
+      console.log(authors);
+      res.render('forms/book', {booksauthors: authors, book: book, action: '/books/' + req.params.id, authors: authorz})
     })
   })
 })
