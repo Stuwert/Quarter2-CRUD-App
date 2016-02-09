@@ -88,6 +88,11 @@ main {
   width: 100%;
   display: flex;
   justify-content: space-between;
+  position: relative;
+}
+
+.allbooks .book h3{
+  width: 50%;
 }
 
 .allbooks .book img{
@@ -277,4 +282,10 @@ form > input, textarea{
 .addBook{
   width: 100%;
   font-size: 3vw;
+}
+
+.editdelete{
+  position: absolute;
+  top: 0;
+  right: 0;
 }

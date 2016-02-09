@@ -33,6 +33,11 @@ block content
               if i !== book.authors.length - 1 
                 li &
           p= book.description 
+        div.editdelete
+          a(href='/books/' + book.id + '/edit')
+            button Edit 
+          a(href='/books/' + book.id + '/delete')
+            button Delete
     a.addBook(href='/books/new')
       button.addBook Create New Book
     
