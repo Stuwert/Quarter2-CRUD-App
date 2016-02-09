@@ -6,8 +6,11 @@ var books = require('../lib/books')
 
 /* GET all books. */
 router.get('/', function(req, res, next) {
-  books.returnAllBooksWithAuthors(function(books){
-    res.render('books/all', {books : books, length: Object.keys(books).length})
+  var pagenum = req.query.page > 1 ? req.query.page : 1;
+  books.returnAllBooks(function(bookslength){
+    books.returnAllBooksWithAuthors(pagenum, function(books){
+      res.render('books/all', {books : books, length: bookslength.length})
+    })
   })
 });
 
