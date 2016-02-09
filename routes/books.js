@@ -8,12 +8,16 @@ var validator = require('../lib/validations')
 /* GET all books. */
 router.get('/', function(req, res, next) {
   if(req.query.genre){
-    books.returnSomeBooks(req.query.genre, 'genre', function(books){
-      res.render('books/all', {books: books, length: books.length})
+    books.returnFilters(function(genres){
+      books.returnSomeBooks(req.query.genre, 'genre', function(books){
+        res.render('books/all', {books: books, length: books.length, genres: genres})
+      })
     })
   }else {
-    books.returnAllBooksWithAuthors(function(books){
-      res.render('books/all', {books : books, length: books.length})
+    books.returnFilters(function(genres){
+      books.returnAllBooksWithAuthors(function(books){
+        res.render('books/all', {books : books, length: books.length, genres: genres})
+      })
     })
   }
 });

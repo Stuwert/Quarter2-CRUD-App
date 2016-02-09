@@ -8,11 +8,9 @@ block content
     div.options
       ul.filter
         li Filter
-        li 
-          a(href='/books?genre=Javascript') Javascript 
-        li 
-          a(href='/books?genre=Python') Python
-    
+        each genre in genres 
+          li 
+            a(href='/books?genre=' + genre)= genre 
     each book in books 
       div.book
         img(src=book.image)
