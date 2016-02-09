@@ -17,8 +17,13 @@ router.get('/', function(req, res, next) {
 
 router.get('/new', function(req, res, next){
   books.returnAuthors(function(authors){
-    console.log(authors);
     res.render('forms/book', {authors: authors})
+  })
+})
+
+router.post('/', function(req, res, next){
+  books.createNewBook(req.body, function(bookid){
+    res.redirect('/books/' + bookid)
   })
 })
 
