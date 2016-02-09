@@ -15,11 +15,29 @@ router.get('/', function(req, res, next) {
   })
 });
 
-router.get('/filter', function(req, res, next){
-  books.returnSomeBooks(req.query.genre, function(books){
-    console.log(books);
-    res.render('books/all', {books: books, length: books.length})
+router.get('/new', function(req, res, next){
+  books.returnAuthors(function(authors){
+    console.log(authors);
+    res.render('forms/book', {authors: authors})
   })
+})
+
+router.get('/filter', function(req, res, next){
+  var pagenum = req.query.page > 1 ? req.query.page : 1;
+  if (req.query.genre){
+    books.returnSomeBooks(req.query.genre, 'genre', function(books){
+      res.render('books/all', {books: books, length: books.length})
+    })
+  }
+  if(req.query.title){
+    books.returnAllBooksWithAuthors(pagenum, function(books){
+      books.filter(function(item){
+        var bool = item.title.includes(req.query.title);
+        return bool
+      })
+      res.render('books/all', {books: books, length: books.length})
+    })
+  }
 })
 
 router.get('/:id', function(req, res, next){

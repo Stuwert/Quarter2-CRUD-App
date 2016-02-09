@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+  +booksauthorsnav('books')
+  main
+    form(method='POST' action= '/books')
+      label Title 
+      input(type='text' name='title' placeholder="What's your favorite book?")
+      label Genre 
+      input(type='text' name='genre' placeholder="Where in the library would you find this?")
+      label Cover Image URL 
+      input(type='text' name='image_url')
+      label Description 
+      textarea(name="description" placeholder="Put in your book description")
+      label Authors 
+      div.authorselect
+        select.submitauthors(name='authors' id='authors' multiple)
+        div.deleteauthors
+      div.addauthors
+        select
+          each author in authors
+            option(value= author.id)= author.first_name + " " + author.last_name 
+        button#addauthor(type='button') Add Author
+      button#submit Create Book 

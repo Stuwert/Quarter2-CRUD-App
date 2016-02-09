@@ -3,7 +3,8 @@ extends ../layout
 block content
   +booksauthorsnav('books')
   main.allbooks
-    h2 Total Books (#{length})
+    h2 Books (#{length})
+    h5= books.length > 1 ? "Displaying " + books.length + " Books" : "Displaying " + books.length + " Book"
     div.options
       - var i = 1
       ul.view
