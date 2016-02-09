@@ -9,7 +9,8 @@ router.get('/', function(req, res, next) {
   var pagenum = req.query.page > 1 ? req.query.page : 1;
   books.returnAllBooks(function(bookslength){
     books.returnAllBooksWithAuthors(pagenum, function(books){
-      res.render('books/all', {books : books, length: bookslength.length})
+      var pages = Math.round(bookslength.length / 5 + 0.5);
+      res.render('books/all', {books : books, length: bookslength.length, pages: pages})
     })
   })
 });
