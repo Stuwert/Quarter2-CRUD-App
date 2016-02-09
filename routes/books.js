@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var books = require('../lib/books')
+var validator = require('../lib/validations')
 
 
 /* GET all books. */
@@ -22,6 +23,12 @@ router.get('/new', function(req, res, next){
 })
 
 router.post('/', function(req, res, next){
+  var validated = validator.validateBook(req.body);
+  if(validated.length > 0){
+    books.returnAuthors(function(authors){
+      res.render('forms/book', {book: req.body, validation: validated, authors : authors })
+    })
+  }
   books.createNewBook(req.body, function(bookid){
     res.redirect('/books/' + bookid)
   })

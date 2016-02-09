@@ -3,18 +3,27 @@ extends ../layout
 block content
   +booksauthorsnav('books')
   main
+    if validation
+      ul
+        each item in validation
+          li=item
     form#form(method='POST' action= '/books')
       label Title 
-      input(type='text' name='title' placeholder="What's your favorite book?" required)
+      input(type='text' name='title' placeholder="What's your favorite book?" required value= book ? book.title : "")
       label Genre 
-      input(type='text' name='genre' placeholder="Where in the library would you find this?" required)
+      input(type='text' name='genre' placeholder="Where in the library would you find this?" required value= book ? book.genre : "")
       label Cover Image URL 
       input(type='url' name='image_url')
       label Description 
-      textarea(name="description" placeholder="Put in your book description" required)
+      textarea(name="description" placeholder="Put in your book description" required)= value= book ? book.description : ""
       label Authors 
       div.authorselect
         select.submitauthors(name='authors' id='authors' multiple required)
+          if book 
+            each author in authors
+              each authr in books.authors 
+                if author.id === authr
+                option(value= author.id)= author.first_name + " " + author.last_name
         div.deleteauthors
       div.addauthors
         select
