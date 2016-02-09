@@ -57,6 +57,18 @@ router.get('/:id', function(req, res, next){
   })
 })
 
+router.get('/:id/delete', function(req, res, next){
+  db.returnOneAuthorWithBooks(req.params.id, function(author, books){
+    res.render('authors/one', {author: author, books: books, del: true})
+  })
+})
+
+router.post('/:id/delete', function(req, res, next){
+  db.deleteAuthor(req.params.id, function(){
+    res.redirect('/authors')
+  })
+})
+
 
 
 module.exports = router;

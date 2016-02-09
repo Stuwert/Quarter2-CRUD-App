@@ -20,3 +20,6 @@ block content
           button Edit 
         a(href='/authors/' + author.id + '/delete')
           button Delete
+    if del
+      form(method='post', action='/authors/' + author.id + '/delete')
+        button Delete this Author?
