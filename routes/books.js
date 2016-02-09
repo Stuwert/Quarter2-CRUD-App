@@ -15,6 +15,13 @@ router.get('/', function(req, res, next) {
   })
 });
 
+router.get('/filter', function(req, res, next){
+  books.returnSomeBooks(req.query.genre, function(books){
+    console.log(books);
+    res.render('books/all', {books: books, length: books.length})
+  })
+})
+
 router.get('/:id', function(req, res, next){
   books.returnOneBook(req.params.id, function(book, authors){
     console.log('book is ', book);
