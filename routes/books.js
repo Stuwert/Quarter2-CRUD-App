@@ -7,12 +7,20 @@ var validator = require('../lib/validations')
 
 /* GET all books. */
 router.get('/', function(req, res, next) {
-  if(req.query.genre){
-    books.returnFilters(function(genres){
-      books.returnSomeBooks(req.query.genre, 'genre', function(books){
-        res.render('books/all', {books: books, length: books.length, genres: genres})
+  if(req.query.genre || req.query.title){
+    if (req.query.genre){
+      books.returnFilters(function(genres){
+        books.returnSomeBooks(req.query.genre, 'genre', function(books){
+          res.render('books/all', {books: books, length: books.length, genres: genres})
+        })
       })
-    })
+    }else{
+      books.returnFilters(function(genres){
+        books.returnSomeBooks(req.query.title, 'title', function(books){
+          res.render('books/all', {books: books, length: books.length, genres: genres})
+        })
+      })
+    }
   }else {
     books.returnFilters(function(genres){
       books.returnAllBooksWithAuthors(function(books){

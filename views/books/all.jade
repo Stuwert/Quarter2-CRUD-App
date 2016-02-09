@@ -4,8 +4,10 @@ block content
   +booksauthorsnav('books')
   main.allbooks
     h2 Books (#{length})
-    h5= books.length > 1 ? "Displaying " + books.length + " Books" : "Displaying " + books.length + " Book"
     div.options
+      form(method='GET' action='/books')
+        input(type='text' name='title')
+        button Search
       ul.filter
         li Filter
         each genre in genres 
