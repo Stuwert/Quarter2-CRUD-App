@@ -59,7 +59,7 @@ header h1{
   border: 1px solid black;
 }
 
-.splash div img{
+.splash div svg{
   width: 42vw;
   height: 25vw;
 }
@@ -330,5 +330,9 @@ form > input, textarea{
 .splash .options{
   width: 100%;
   border: none;
+}
 
+nav svg{
+  width: 5vw;
+  height: 5vw;
 }
