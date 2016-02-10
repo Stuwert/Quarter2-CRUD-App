@@ -15,11 +15,12 @@ block content
             if i !== authors.length - 1 
               li &
         p= book.description 
-      div.editdelete
-        a(href='/books/' + book.id + '/edit')
-          button Edit 
-        a(href='/books/' + book.id + '/delete')
-          button Delete
-    if del
+      if authlevel > 3
+        div.editdelete
+          a(href='/books/' + book.id + '/edit')
+            button Edit 
+          a(href='/books/' + book.id + '/delete')
+            button Delete
+    if del && authlevel > 3
       form(method='post', action='/books/' + book.id + '/delete')
         button Delete this Book?

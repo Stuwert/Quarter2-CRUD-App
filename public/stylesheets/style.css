@@ -342,4 +342,7 @@ nav svg{
   position: absolute;
   right: 0;
   bottom: 0;
+  width: 15vw;
+  display: flex;
+  justify-content: space-between;
 }

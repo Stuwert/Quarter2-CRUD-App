@@ -33,13 +33,19 @@ router.get('/signin', function(req, res, next){
 router.post('/signin', function(req, res, next){
   Users().where('username', req.body.username).first().then(function(result){
     if(bcrypt.compareSync(req.body.password, result.password)){
-      res.cookie('username', req.body.username, {httpOnly: true, secure: true})
-      res.cookie('authlevel', req.body.authlevel, {httpOnly: true, secure: true})
+      res.cookie('username', req.body.username)
+      res.cookie('authlevel', result.authlevel)
       res.redirect('/')
     }else{
       res.render('auth/signin', {message: "Looks like you had the incorrect username or password"})
     }
   })
+})
+
+router.get('/signout', function(req, res, next){
+  res.clearCookie('username')
+  res.clearCookie('authlevel')
+  res.redirect('/')
 })
 
 module.exports = router;

@@ -15,11 +15,12 @@ block content
           each item, i in books 
             li
               a(href='/books/' + item.book_id)= item.title 
-      div.editdelete
-        a(href='/authors/' + author.id + '/edit')
-          button Edit 
-        a(href='/authors/' + author.id + '/delete')
-          button Delete
-    if del
+      if authlevel > 3
+        div.editdelete
+          a(href='/authors/' + author.id + '/edit')
+            button Edit 
+          a(href='/authors/' + author.id + '/delete')
+            button Delete
+    if del && authlevel > 3
       form(method='post', action='/authors/' + author.id + '/delete')
         button Delete this Author?

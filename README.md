@@ -12,7 +12,10 @@ The goal of the assessment is to create a working CRUD app that contains databas
 - Admin/User functionality
 - CRUD routes for two data types
 - CSS with 3 page view types.  
-- Knex.js to manage database interactions.  
+- Knex.js to manage database interactions.
+- Uses bcrypt to hash and store passwords
+- Basic form validation
+- Uses cookies/authorization to store create, edit, delete privileges  
 
 
 ### Contributions
@@ -24,3 +27,9 @@ npm install
 ```
 
 I've used a feature-branch git workflow type.  
+
+### Next Steps
+
+- Increase security for Authentication and User Sessions
+- Improve specificity of form validation
+- Add OAuth 

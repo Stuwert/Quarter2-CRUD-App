@@ -27,14 +27,16 @@ block content
                 a(href='/authors/' + item.id)= item.name 
               if i !== book.authors.length - 1 
                 li &
-          p= book.description 
-        div.editdelete
-          a(href='/books/' + book.id + '/edit')
-            button Edit 
-          a(href='/books/' + book.id + '/delete')
-            button Delete
-    a.addBook(href='/books/new')
-      button.addBook Create New Book
+          p= book.description
+        if authlevel > 3 
+          div.editdelete
+            a(href='/books/' + book.id + '/edit')
+              button Edit 
+            a(href='/books/' + book.id + '/delete')
+              button Delete
+    if authlevel > 3
+      a.addBook(href='/books/new')
+        button.addBook Create New Book
     
         
         

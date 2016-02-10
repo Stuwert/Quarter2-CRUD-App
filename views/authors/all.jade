@@ -21,10 +21,14 @@ block content
             each book in author.books 
               li
                 a(href='/books/' + book.id)= book.title
-        div.editdelete
-          a(href='/authors/' + author.id + '/edit')
-            button Edit 
-          a(href='/authors/' + author.id + '/delete')
-            button Delete
-      
+        if authlevel > 3
+          div.editdelete
+            a(href='/authors/' + author.id + '/edit')
+              button Edit 
+            a(href='/authors/' + author.id + '/delete')
+              button Delete
+    if authlevel > 3
+      a.addBook(href='/authors/new')
+        button.addBook Add New Book
+            
         
