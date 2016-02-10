@@ -1,0 +1,14 @@
+extends ../layout 
+
+block content
+  main 
+    form(method='POST' action="/auth/signup")
+      if message
+        p= message
+      label Email 
+      input(type='email' name='email' required)
+      label UserName 
+      input(type='text' name='username' required)
+      label Password
+      input(type='password' name='password' required) 
+      button Sign-up

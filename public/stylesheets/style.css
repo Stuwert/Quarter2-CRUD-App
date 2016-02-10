@@ -28,6 +28,7 @@ header{
   height: 8vw;
   padding: 2vw;
   width: 100%;
+  position: relative;
 }
 
 header img{
@@ -335,4 +336,10 @@ form > input, textarea{
 nav svg{
   width: 5vw;
   height: 5vw;
+}
+
+.auth {
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
