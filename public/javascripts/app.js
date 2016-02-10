@@ -19,7 +19,8 @@ if (testarray.length > 5){
   testarray.forEach(function(item){
     $(item).css({"display" : "none"})
   })
-  var buttons = Math.round((testarray.length - 5) / 5 + 0.5);
+  var buttons = divisibleByFive(testarray.length);
+  console.log(buttons);
   $('.options').append('<div id="filter"></div>')
   for (var i = 1; i <=buttons; i++){
     $('#filter').append('<a id="page-'+i+'">' + i +  '</a>')
@@ -33,9 +34,11 @@ if (testarray.length > 5){
     var filter = $(this).text();
     filter = +filter;
     testarray.forEach(function(item, i){
-      if (i > filter * 5 - 5 && i < 5 * filter){
+      if (i >= filter * 5 - 5 && i < 5 * filter){
+        console.log("Showing ", i);
         $(item).css({"display" : "flex"})
       }else{
+        console.log("Hidden ", i);
         $(item).css({"display" : "none"})
       }
     })
@@ -43,3 +46,17 @@ if (testarray.length > 5){
 }
 
 })
+
+function divisibleByFive(i){
+  var difference = i % 5;
+  if (difference === 0){
+    return i / 5;
+  }else{
+    for (j = 1; j < 5; j++){
+      var newdifference = (i-j) % 5;
+      if (newdifference === 0){
+        return (i-j) / 5 + 1;
+      }
+    }
+  }
+}

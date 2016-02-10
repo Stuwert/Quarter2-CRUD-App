@@ -1,8 +1,8 @@
 var db = require('../db/knex')
 
 exports.seed = function(knex, Promise) {
-  return db('authors').select().then(function(authors){
-    return db('books').select().then(function(books){
+  return db('authors').select().orderBy('id', 'asc').then(function(authors){
+    return db('books').select().orderBy('id', 'asc').then(function(books){
       return Promise.join(
         // Deletes ALL existing entries
         knex('book_authors').del(),
