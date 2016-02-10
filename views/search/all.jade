@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+  +booksauthorsnav()
+  main.allbooks
+    h2 Search
+    div.options
+      h4 Author Name or Book Title
+      form.search(method='GET' action='/search')
+        input(type='text' name='terms')
+        button Search
+    each item in results 
+      div.book
+        img.portrait(src=item.image)
+        div.details.authordetails 
+          h3
+            a(href='/' + item.type + 's/' + item.id)= item.display
+          p= item.description
+
+      
+        

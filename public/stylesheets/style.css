@@ -300,3 +300,35 @@ form > input, textarea{
 .search button, .search input{
   font-size: 2vw;
 }
+
+.splash button{
+  width: 100%;
+  font-size: 4vw;
+  padding: 1vw;
+  border-radius: 0;
+  border: 1px solid black;
+  box-shadow: none;
+  background-color: lightgrey;
+}
+
+.splash input{
+  width: 50%;
+  font-size: 4vw;
+}
+
+.splash button{
+  width: 50%;
+}
+
+.splash form{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.splash .options{
+  width: 100%;
+  border: none;
+
+}
