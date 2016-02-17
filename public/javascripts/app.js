@@ -21,7 +21,7 @@ if (testarray.length > 5){
   })
   var buttons = divisibleByFive(testarray.length);
   console.log(buttons);
-  $('.options').append('<div id="filter"></div>')
+  $('.options').append('<div id="filter"><h2>Page</h2></div>')
   for (var i = 1; i <=buttons; i++){
     $('#filter').append('<a id="page-'+i+'">' + i +  '</a>')
   }
